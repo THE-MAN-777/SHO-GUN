@@ -1,0 +1,55 @@
+# Define the list of filenames
+file_names = [
+    "!createchannel [channel-name] [type]",
+    "!deletechannel [channel-name]",
+    "!createthread [thread-name] [in-channel]",
+    "!closethread [thread-name]",
+    "!listchannels",
+    "!movechannel [channel-name] [new-position]",
+    "!pinmessage [message-id] [in-channel]",
+    "!unpinmessage [message-id] [in-channel]",
+    "!setchanneltopic [channel-name] [topic]",
+    "!setchannelcategory [channel-name] [category]",
+    "!createcategory [category-name]",
+    "!deletecategory [category-name]",
+    "!createrole [role-name]",
+    "!deleterole [role-name]",
+    "!setrolecolor [role-name] [hex-color-code]",
+    "!setrolepriority [role-name] [priority-number]",
+    "!assignrole [@user] [role-name]",
+    "!removerole [@user] [role-name]",
+    "!listroles",
+    "!setrolehoist [role-name] [true/false]",
+    "!togglementionable [role-name]",
+    "!setroleicon [role-name] [emoji or icon URL]",
+    "!setchannelpermissions [channel-name] [role-name] [permissions]",
+    "!setrolepermissions [role-name] [permissions]",
+    "!lockchannel [channel-name] [role-name]",
+    "!unlockchannel [channel-name] [role-name]",
+    "!restrictthread [thread-name] [role-name]",
+    "!allowthread [thread-name] [role-name]",
+    "!setvoicepermissions [channel-name] [role-name] [permissions]",
+    "!viewpermissions [role-name]",
+    "!setwelcomechannel [channel-name]",
+    "!setruleschannel [channel-name]",
+    "!setafkchannel [channel-name]",
+    "!addreactionrole [message-id] [emoji] [role-name]",
+    "!setservericon [image-url]"
+]
+
+# Convert commands to valid Python filenames and create empty files
+for command in file_names:
+    # Clean command to a valid filename:
+    # 1. Remove '!' from the beginning.
+    # 2. Replace special characters and spaces with underscores.
+    # 3. Take the base command name before any parameters.
+    filename = command.split()[0][1:]  # Remove the '!'
+    filename = filename.replace(' ', '_').replace('[', '').replace(']', '')  # Replace spaces and remove brackets
+    filename = filename.lower()  # Convert to lowercase
+    filename += ".py"  # Append .py extension
+
+    # Create an empty file with the cleaned filename
+    with open(filename, 'w') as file:
+        pass
+
+print("Files created successfully.")
